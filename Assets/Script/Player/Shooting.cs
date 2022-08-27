@@ -1,6 +1,8 @@
+using System;
 using UnityEngine;
 using Asteroids.Object_Pool;
 using Script.Bullets;
+using Script.ServiceLocator;
 
 namespace Asteroids
 {
@@ -12,6 +14,7 @@ namespace Asteroids
         private readonly Transform _barrel;
         private int _pollCapacity = 5;
         private ObjectPool<Bullet> _pool;
+        private IServiceLocator<IService<Bullet>> _locator;
 
 
         public Shooting(Bullet bullet, Transform barrel)
@@ -23,6 +26,11 @@ namespace Asteroids
             {
                 AutoExpand = true
             };
+            
+            
+            _locator = new ServiceLocator<IService<Bullet>>();
+            var bulletPoolService = new BulletPoolService(_pool);
+            _locator.Register(bulletPoolService);
         }
 
         public void Shot()
@@ -32,7 +40,8 @@ namespace Asteroids
 
         private void CreateBullet()
         {
-            var bullet = _pool.GetFreeElement();
+            var BulletPool = _locator.GetTP<BulletPoolService>();
+            var bullet = BulletPool._bulletPool.GetFreeElement();
             bullet.transform.position = _barrel.position;
         }
     }

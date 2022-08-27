@@ -85,8 +85,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 20
   enemyRigidbody: {fileID: 8193698382463352855}
-  damageAmount: 0
-  _listEffect: []
+  _listEffect:
+  - {fileID: 195742, guid: c83fb3ef04bb383408bb2064b89690b2, type: 3}
+  - {fileID: 132352, guid: 71b02155078e4bf4e962f302d3675af2, type: 3}
+  - {fileID: 103350, guid: 5ea442f5d97b58843a80992f3d61e220, type: 3}
+  - {fileID: 113576, guid: 471088445f741e64c82f447ba7849c30, type: 3}
+  - {fileID: 1573447895519926, guid: f2bb6fbe63bfed24f8ee027776bfed73, type: 3}
   _damage: 1
 --- !u!1 &7144594664846831093
 GameObject:

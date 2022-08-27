@@ -12,6 +12,18 @@ namespace Script.Bullets
         private WaitForSeconds _wait;
         private Coroutine _shotRoutine;
 
+        public float ShotForce
+        {
+            get => _shotForce;
+            set => _shotForce = value;
+        }
+
+        public Rigidbody2D BulletRigidbody
+        {
+            get => _bulletRigidbody;
+            set => _bulletRigidbody = value;
+        }
+
         private void Awake()
         {
             _parent = transform.parent;

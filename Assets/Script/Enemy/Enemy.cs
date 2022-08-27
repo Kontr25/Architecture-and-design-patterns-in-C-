@@ -3,6 +3,7 @@ using Asteroids;
 using UnityEngine;
 using UnityEngine.Serialization;
 using DG.Tweening;
+using Script.Bullets;
 
 namespace Script.Enemy
 {
@@ -48,6 +49,11 @@ namespace Script.Enemy
             if (col.TryGetComponent(out Player player))
             {
                 player.PlayerHealth.OnDamaged(_damage);
+                DestroyEnemy();
+            }
+
+            if (col.TryGetComponent(out Bullet bullet))
+            {
                 DestroyEnemy();
             }
         }

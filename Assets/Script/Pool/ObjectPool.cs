@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using Script.Bullets;
+using Script.ServiceLocator;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -18,7 +20,7 @@ namespace Asteroids.Object_Pool
             _prefab = prefab;
             _container = container;
 
-            CreatePool(capacity); 
+            CreatePool(capacity);
         }
 
         private void CreatePool(int capacity)
