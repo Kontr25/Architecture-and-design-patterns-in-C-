@@ -4,8 +4,8 @@ namespace Asteroids
 {
     public interface IHealth
     {
-        float Hp { get; }
+        float remainingHealth { get; }
 
-        void OnDamaged();
+        void OnDamaged(float remainingHealth);
     }
 }

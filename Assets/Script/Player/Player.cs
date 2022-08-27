@@ -1,3 +1,5 @@
+using Script.Bullets;
+using Script.UI;
 using UnityEngine;
 namespace Asteroids
 {
@@ -7,24 +9,25 @@ namespace Asteroids
         [SerializeField] private float _hp;
         [SerializeField] private float _acceleration;
         [SerializeField] private Rigidbody2D _playerRigidbody;
-        [SerializeField] private Rigidbody2D _bullet;
+        [SerializeField] private Bullet _bullet;
         [SerializeField] private Transform _barrel;
-        [SerializeField] private float _force;
 
         private Ship _ship;
         private Camera _camera;
         private Shooting _shooting;
-        private Health _health;
+        public Health  PlayerHealth {get; set;}
 
         private void Start()
         {
+            var healthBar = Object.Instantiate(Resources.Load<HealthBar>("UIBars/HealthBar"));
+            healthBar.SetFollowTarget(transform);
             _camera = Camera.main;
-            _shooting = new Shooting(_bullet, _barrel, _force);
 
             var moveTransform = new AccelerationMove(_playerRigidbody, _speed, _acceleration);
             var rotation = new RotationShip(transform);
-            var health = new Health(_hp);
-            _ship = new Ship(moveTransform, rotation, health);
+            PlayerHealth = new Health(_hp, healthBar);
+            _ship = new Ship(moveTransform, rotation, PlayerHealth);
+            _shooting = new Shooting(_bullet, _barrel);
         }
 
         private void Update()
@@ -46,11 +49,6 @@ namespace Asteroids
 
 
             if (Input.GetButtonDown("Fire1")) _shooting.Shot();
-        }
-
-        private void OnCollisionEnter2D(Collision2D other)
-        {
-            _health.OnDamaged();
         }
     }
 }

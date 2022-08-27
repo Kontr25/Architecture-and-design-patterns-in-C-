@@ -7,7 +7,7 @@ namespace Asteroids
         private readonly IRotation _rotationImplementation;
         private readonly IHealth _healthImplementation;
         public float Speed => _moveImplementation.Speed;
-        public float Hp => _healthImplementation.Hp;
+        public float remainingHealth => _healthImplementation.remainingHealth;
 
         public Ship(IMove moveImplementation, IRotation rotationImplementation, IHealth healthImplementation)
         {
@@ -38,9 +38,9 @@ namespace Asteroids
             }
         }
 
-        public void OnDamaged()
+        public void OnDamaged(float remainingHealth)
         {
-            _healthImplementation.OnDamaged();
+            _healthImplementation.OnDamaged(remainingHealth);
         }
     }
 }

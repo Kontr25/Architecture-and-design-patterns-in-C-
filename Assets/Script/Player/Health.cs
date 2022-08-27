@@ -1,27 +1,33 @@
 using System;
+using Script.UI;
 using UnityEngine;
 
 namespace Asteroids
 {
-    internal class Health : MonoBehaviour, IHealth
+    public class Health : MonoBehaviour, IHealth
     {
-        public float Hp { get; protected set; }
+        public float remainingHealth { get; protected set; }
+        
+        private HealthBar _healthBar;
 
-        public Health(float hp)
+        public Health(float remainingHealth, HealthBar healthBar)
         {
-            Hp = hp;
+            this.remainingHealth = remainingHealth;
+            _healthBar = healthBar;
+            _healthBar.MaxHp = remainingHealth;
         }
 
-        public void OnDamaged()
+        public void OnDamaged(float remainingHealth)
         {
-            if (Hp <= 0)
+            if (this.remainingHealth <= 0)
             {
                 Destroy(gameObject);
             }
             else
             {
-                Hp--;
+                this.remainingHealth -= remainingHealth;
             }
+            _healthBar.OnDamaged(this.remainingHealth);
         }
     }
 }

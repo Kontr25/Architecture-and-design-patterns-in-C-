@@ -1,23 +1,39 @@
 using UnityEngine;
+using Asteroids.Object_Pool;
+using Script.Bullets;
+
 namespace Asteroids
 {
     internal sealed class Shooting : MonoBehaviour
     {
-        private readonly Rigidbody2D _bullet;
+        
+        
+        private readonly Bullet _bullet;
         private readonly Transform _barrel;
-        private readonly float _force;
+        private int _pollCapacity = 5;
+        private ObjectPool<Bullet> _pool;
 
-        public Shooting(Rigidbody2D bullet, Transform barrel, float force)
+
+        public Shooting(Bullet bullet, Transform barrel)
         {
             _bullet = bullet;
             _barrel = barrel;
-            _force = force;
+
+            _pool = new ObjectPool<Bullet>(_bullet, _pollCapacity, _barrel)
+            {
+                AutoExpand = true
+            };
         }
 
         public void Shot()
         {
-            var temAmmunition = Instantiate(_bullet, _barrel.position,  _barrel.rotation);
-            temAmmunition.AddForce(_barrel.up * _force);
+            CreateBullet();
+        }
+
+        private void CreateBullet()
+        {
+            var bullet = _pool.GetFreeElement();
+            bullet.transform.position = _barrel.position;
         }
     }
 }
