@@ -6,21 +6,25 @@ using Script.ServiceLocator;
 
 namespace Asteroids
 {
-    internal sealed class Shooting : MonoBehaviour
+    public sealed class Weapon : MonoBehaviour, IWeapon
     {
         
         
         private readonly Bullet _bullet;
-        private readonly Transform _barrel;
+        private Transform _barrel;
         private int _pollCapacity = 5;
         private ObjectPool<Bullet> _pool;
         private IServiceLocator<IService<Bullet>> _locator;
+        private AudioSource _defaultShotSound;
+        private AudioSource _shotSound;
 
 
-        public Shooting(Bullet bullet, Transform barrel)
+        public Weapon(Bullet bullet, Transform barrel, AudioSource defaultShotSound)
         {
+            _defaultShotSound = defaultShotSound;
+            _shotSound = _defaultShotSound;
             _bullet = bullet;
-            _barrel = barrel;
+            SetBarrelPosition(barrel);
 
             _pool = new ObjectPool<Bullet>(_bullet, _pollCapacity, _barrel)
             {
@@ -36,6 +40,18 @@ namespace Asteroids
         public void Shot()
         {
             CreateBullet();
+            _shotSound.Play();
+        }
+
+        public void SetShotSound(AudioSource shotSound)
+        {
+            if (shotSound != null) _shotSound = shotSound;
+            else _shotSound = _defaultShotSound;
+        }
+
+        public void SetBarrelPosition(Transform barrelPosition)
+        {
+            _barrel = barrelPosition;
         }
 
         private void CreateBullet()
