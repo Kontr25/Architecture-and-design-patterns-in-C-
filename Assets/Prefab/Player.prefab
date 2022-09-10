@@ -348,6 +348,7 @@ GameObject:
   - component: {fileID: 8651653354704657738}
   - component: {fileID: 2423648396781469716}
   - component: {fileID: 5202732774158320421}
+  - component: {fileID: 8553524932705091155}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -391,8 +392,8 @@ MonoBehaviour:
   _playerRigidbody: {fileID: 2423648396781469716}
   _bullet: {fileID: 1716271237428158626, guid: d29e4d7abc106844b914c5959913af3c, type: 3}
   _barrel: {fileID: 1638939415650656178}
-  _muffler: {fileID: 812810978872733488, guid: 3c6786f457476b346936358346442e9f, type: 3}
-  _aim: {fileID: 4403705830676053079, guid: 421bc408596bda4479eea29777474e80, type: 3}
+  _mufflerObj: {fileID: 0}
+  _aimObj: {fileID: 0}
   _mufflerShotSound: {fileID: 491461195691485004}
   _defaultShotSound: {fileID: 6030852797459589797}
 --- !u!50 &2423648396781469716
@@ -442,6 +443,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.66, y: 2.72}
   m_EdgeRadius: 0
+--- !u!114 &8553524932705091155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6397610934355814555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c3007b69e0a436ea902de87c4659277, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _recordTime: 5
+  _rb: {fileID: 2423648396781469716}
 --- !u!1 &8247049931806437488
 GameObject:
   m_ObjectHideFlags: 0
