@@ -92,6 +92,7 @@ MonoBehaviour:
   - {fileID: 113576, guid: 471088445f741e64c82f447ba7849c30, type: 3}
   - {fileID: 1573447895519926, guid: f2bb6fbe63bfed24f8ee027776bfed73, type: 3}
   _damage: 2
+  _pointNumber: 400000
 --- !u!1 &7144594664846831093
 GameObject:
   m_ObjectHideFlags: 0

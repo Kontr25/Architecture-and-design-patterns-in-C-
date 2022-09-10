@@ -4,7 +4,7 @@ using Script.UI;
 using UnityEngine;
 namespace Asteroids
 {
-    internal sealed class Player : MonoBehaviour
+    public sealed class Player : MonoBehaviour
     {
         [SerializeField] private float _speed;
         [SerializeField] private float _hp;

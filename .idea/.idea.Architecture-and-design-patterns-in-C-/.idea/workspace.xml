@@ -23,7 +23,7 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Script/Lesson 6/unit.json" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Script/Lesson 6/unit.json" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -89,6 +89,7 @@
       <workItem from="1662653459564" duration="697000" />
       <workItem from="1662654399674" duration="908000" />
       <workItem from="1662658953958" duration="1903000" />
+      <workItem from="1662816370641" duration="9812000" />
     </task>
     <servers />
   </component>

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using DG.Tweening;
 using Script.Bullets;
+using Script.Lesson_8;
 
 namespace Script.Enemy
 {
@@ -17,6 +18,7 @@ namespace Script.Enemy
         [FormerlySerializedAs("_enemyRigidbody")] [SerializeField] private Rigidbody2D enemyRigidbody;
         [SerializeField] private List<GameObject> _listEffect = new List<GameObject>();
         [SerializeField] private float _damage;
+        [SerializeField] private float _pointNumber;
 
         private EnemyMover _enemyMover;
         private EnemyVisualisation _enemyVisualisation;
@@ -62,6 +64,7 @@ namespace Script.Enemy
         {
             transform.DOScale(.05f, 0.2f).onComplete = () =>
             {
+                InterpreterPoint.KillPoint(_pointNumber);
                 _enemyVisualisation.DeathEffect();
                 Destroy(gameObject);
             };
